@@ -1,7 +1,6 @@
 import { ProductsTableTypes } from "./types";
 
-const ProductsTable = ({ columns }: ProductsTableTypes) => {
-
+const ProductsTable = ({ columns, rowsData }: ProductsTableTypes) => {
     const capitalizeString = (str: string) => {
       return str.charAt(0).toUpperCase() + str.slice(1);
     };
