@@ -1,15 +1,15 @@
-import { ProductsTableTypes } from "./types";
+import { ProductsTableTypes, ProductData } from "./types";
 
 const ProductsTable = ({ columns, rowsData }: ProductsTableTypes) => {
-    const capitalizeString = (str: string) => {
-      return str.charAt(0).toUpperCase() + str.slice(1);
-    };
+  const capitalizeString = (str: string) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
 
-    const renderColumns = () => {
-      return columns.map((column: string) => {
-        return <th key={column}>{capitalizeString(column)}</th>;
-      });
-    };
+  const renderColumns = () => {
+    return columns.map((column: string) => {
+      return <th key={column}>{capitalizeString(column)}</th>;
+    });
+  };
 
   const renderRows = () => {
     return rowsData.map((rowData: ProductData) => {
@@ -23,14 +23,14 @@ const ProductsTable = ({ columns, rowsData }: ProductsTableTypes) => {
     });
   };
 
-    return (
-      <table>
-        <thead>
-          <tr>{renderColumns()}</tr>
-        </thead>
+  return (
+    <table>
+      <thead>
+        <tr>{renderColumns()}</tr>
+      </thead>
       <tbody>{renderRows()}</tbody>
-      </table>
-    );
+    </table>
+  );
 };
 
 export default ProductsTable;
