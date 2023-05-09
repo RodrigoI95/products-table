@@ -12,12 +12,24 @@ const ProductsTable = ({ columns }: ProductsTableTypes) => {
       });
     };
 
+  const renderRows = () => {
+    return rowsData.map((rowData: ProductData) => {
+      return (
+        <tr key={"row-" + rowData.code}>
+          {Object.values(rowData).map((celData, i) => {
+            return <td key={"cel-" + i + rowData.code}>{celData}</td>;
+          })}
+        </tr>
+      );
+    });
+  };
+
     return (
       <table>
         <thead>
           <tr>{renderColumns()}</tr>
         </thead>
-        <tbody></tbody>
+      <tbody>{renderRows()}</tbody>
       </table>
     );
 };
