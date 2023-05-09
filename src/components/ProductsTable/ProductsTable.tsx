@@ -3,7 +3,7 @@ import { ProductsTableTypes } from "./types";
 const ProductsTable = ({ columns }: ProductsTableTypes) => {
   const renderColumns = () => {
     return columns.map((column: string) => {
-      return <th>{column}</th>;
+      return <th key={column}>{column}</th>;
     });
   };
 
