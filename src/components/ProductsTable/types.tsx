@@ -7,10 +7,13 @@ export type ProductData = {
   description: string;
 };
 
+export type SortType = "none" | "ascending" | "descending";
+ 
+
 export type Columns = {
   title: string;
   isSortable: boolean;
-  sortType: string; //"none" | "ascending" | "descending";
+  sortType: "none" | "ascending" | "descending";
 };
 
 export type ProductsTableTypes = {

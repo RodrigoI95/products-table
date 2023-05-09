@@ -9,22 +9,15 @@ import {ProductsTable} from "./components/ProductsTable";
 import data from './data/products.json';
 
 // Hooks
-import {useState} from "react";
+import { useState } from "react";
 
-// Type
-type ProductData = {
-  code: string;
-  position: number;
-  quantity: number;
-  image: string;
-  price: number;
-  description: string;
-};
+// Types
+import { SortType, ProductData } from "./components/ProductsTable/types";
 
 function App() {
   // States
   const [products, setProducts] = useState<ProductData[]>(data.products);
-  const [currentSort, setCurrentSort] = useState<string>("descending");
+  const [currentSort, setCurrentSort] = useState<SortType>("descending");
   const [currentSortColumn, setCurrentSortColumn] =
     useState<string>("position");
 
@@ -48,7 +41,7 @@ function App() {
         return 1 * sortDirection;
       } else {
         return 0;
-}
+      }
     });
 
     setCurrentSortColumn(column);
