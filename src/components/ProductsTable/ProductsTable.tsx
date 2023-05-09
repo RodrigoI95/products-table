@@ -1,13 +1,40 @@
-import { ProductsTableTypes, ProductData } from "./types";
+import { ProductsTableTypes, ProductData, Columns } from "./types";
 
-const ProductsTable = ({ columns, rowsData }: ProductsTableTypes) => {
+// Icons
+import SortIcon from "../../assets/icons/upDownArrow.svg";
+import SortUp from "../../assets/icons/sort.svg";
+import SortDown from "../../assets/icons/reverseSort.svg";
+
+const ProductsTable = ({
+  columns,
+  rowsData,
+  sortFunction,
+}: ProductsTableTypes) => {
   const capitalizeString = (str: string) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
 
+  const displayIcon = (sortType: string) => {
+    if (sortType === "none") return SortIcon;
+    else if (sortType === "ascending") return SortUp;
+    else return SortDown;
+  };
+
   const renderColumns = () => {
-    return columns.map((column: string) => {
-      return <th key={column}>{capitalizeString(column)}</th>;
+    return columns.map((column: Columns) => {
+      return (
+        <th key={column.title}>
+          {capitalizeString(column.title)}
+
+          {column.isSortable && (
+            <img
+              src={displayIcon(column.sortType)}
+              style={{ height: "15px" }}
+              onClick={() => sortFunction(column.title)}
+            ></img>
+          )}
+        </th>
+      );
     });
   };
 
