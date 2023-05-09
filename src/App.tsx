@@ -8,6 +8,9 @@ import {ProductsTable} from "./components/ProductsTable";
 // Data
 import data from './data/products.json';
 
+// Hooks
+import {useState} from "react";
+
 // Type
 type ProductData = {
   code: string,
