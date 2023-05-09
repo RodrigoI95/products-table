@@ -10,4 +10,5 @@ export type ProductData = {
 export type ProductsTableTypes = {
   columns: string[];
   rowsData: ProductData[];
+  sortFunction: Function;
 };
