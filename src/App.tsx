@@ -55,10 +55,26 @@ function App() {
     setProducts(sortedColumns);
   };
 
-function App() {
+  const createColumns = () => {
+    return Object.keys(products[0]).map((col) => {
+      const sortType = col === currentSortColumn ? currentSort : "none";
+      return {
+        title: col,
+        isSortable: col !== "image",
+        sortType,
+      };
+    });
+  };
+
   return (
     <div className="App">
-      <ProductsTable {...{ columns }} />
+      <ProductsTable
+        {...{
+          columns: createColumns(),
+          rowsData: products,
+          sortFunction: sortTableByColumn,
+        }}
+      />
     </div>
   );
 }

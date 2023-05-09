@@ -7,8 +7,14 @@ export type ProductData = {
   description: string;
 };
 
+export type Columns = {
+  title: string;
+  isSortable: boolean;
+  sortType: string; //"none" | "ascending" | "descending";
+};
+
 export type ProductsTableTypes = {
-  columns: string[];
+  columns: Columns[];
   rowsData: ProductData[];
   sortFunction: Function;
 };
