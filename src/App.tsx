@@ -2,8 +2,18 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-// COmponents
-import {ProductsTable} from "./components/ProductsTable"
+// Data
+import data from './data/products.json';
+
+// Type
+type ProductData = {
+  code: string,
+  position: number,
+  quantity: number,
+  image: string,
+  price: number,
+  description: string
+}
 
 function App() {
   return (
