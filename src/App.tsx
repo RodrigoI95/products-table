@@ -2,6 +2,9 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+// Components
+import {ProductsTable} from "./components/ProductsTable";
+
 // Data
 import data from './data/products.json';
 
