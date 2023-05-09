@@ -13,13 +13,47 @@ import {useState} from "react";
 
 // Type
 type ProductData = {
-  code: string,
-  position: number,
-  quantity: number,
-  image: string,
-  price: number,
-  description: string
+  code: string;
+  position: number;
+  quantity: number;
+  image: string;
+  price: number;
+  description: string;
+};
+
+function App() {
+  // States
+  const [products, setProducts] = useState<ProductData[]>(data.products);
+  const [currentSort, setCurrentSort] = useState<string>("descending");
+  const [currentSortColumn, setCurrentSortColumn] =
+    useState<string>("position");
+
+  const sortTableByColumn = (column: keyof ProductData) => {
+    let sortedColumns = [...products];
+
+    if (column === currentSortColumn) {
+      setCurrentSort(currentSort === "descending" ? "ascending" : "descending");
+    } else {
+      setCurrentSort("ascending");
+    }
+
+    sortedColumns.sort((a: ProductData, b: ProductData) => {
+      const sortDirection = currentSort === "ascending" ? 1 : -1;
+      const aValue = a[column];
+      const bValue = b[column];
+
+      if (aValue < bValue) {
+        return -1 * sortDirection;
+      } else if (aValue > bValue) {
+        return 1 * sortDirection;
+      } else {
+        return 0;
 }
+    });
+
+    setCurrentSortColumn(column);
+    setProducts(sortedColumns);
+  };
 
 function App() {
   return (
