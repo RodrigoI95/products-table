@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: "GTAmerica";
+    src: url("./assets/fonts/GT-America/GT-America-Condensed-Thin-Trial.woff2");
+    src: url("./assets/fonts/GT-America/GT-America-Condensed-Thin-Trial.woff2")
+      format("truetype");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "GTAmericaLight";
+    src: url("./assets/fonts/GT-America/GT-America-Standard-Light-Trial.woff2");
+    src: url("./assets/fonts/GT-America/GT-America-Standard-Light-Trial.woff2")
+      format("truetype");
+    font-display: swap;
+  }
+  body{
+    @apply font-body;
+  }
+  h1,h2,h2{
+    @apply font-heading;
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
