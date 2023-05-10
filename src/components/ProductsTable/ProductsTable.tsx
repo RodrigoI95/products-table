@@ -9,6 +9,7 @@ const ProductsTable = ({
   columns,
   rowsData,
   sortFunction,
+  searchInTable,
 }: ProductsTableTypes) => {
   const capitalizeString = (str: string) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -51,12 +52,17 @@ const ProductsTable = ({
   };
 
   return (
-    <table>
-      <thead>
-        <tr>{renderColumns()}</tr>
-      </thead>
-      <tbody>{renderRows()}</tbody>
-    </table>
+    <div>
+      <div>
+        <input onChange={(evt) => searchInTable(evt)} />
+      </div>
+      <table>
+        <thead>
+          <tr>{renderColumns()}</tr>
+        </thead>
+        <tbody>{renderRows()}</tbody>
+      </table>
+    </div>
   );
 };
 

@@ -59,6 +59,19 @@ function App() {
     });
   };
 
+  const filterProducts = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value.toLocaleLowerCase();
+    const products = data.products;
+    setProducts(
+      products.filter((product) => {
+        return (
+          product.code.toLocaleLowerCase().includes(value) ||
+          product.description.toLocaleLowerCase().includes(value)
+        );
+      })
+    );
+  };
+
   return (
     <div className="App">
       <ProductsTable
@@ -66,6 +79,7 @@ function App() {
           columns: createColumns(),
           rowsData: products,
           sortFunction: sortTableByColumn,
+          searchInTable: filterProducts,
         }}
       />
     </div>
