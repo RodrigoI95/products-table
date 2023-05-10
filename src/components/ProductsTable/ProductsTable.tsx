@@ -24,19 +24,34 @@ const ProductsTable = ({
   const renderColumns = () => {
     return columns.map((column: Columns) => {
       return (
-        <th key={column.title}>
-          {capitalizeString(column.title)}
+        <th
+          className="text-left border-black border-solid border p-1.5"
+          key={column.title}
+        >
+          <div className="flex flex-row justify-center items-center">
+            {capitalizeString(column.title)}
 
-          {column.isSortable && (
-            <img
-              src={displayIcon(column.sortType)}
-              style={{ height: "15px" }}
-              onClick={() => sortFunction(column.title)}
-            ></img>
-          )}
+            {column.isSortable && (
+              <img
+                className="pl-1.5"
+                src={displayIcon(column.sortType)}
+                style={{ height: "15px" }}
+                onClick={() => sortFunction(column.title)}
+              ></img>
+            )}
+          </div>
         </th>
       );
     });
+  };
+
+  const renderCellContent = (rowData: string | number) => {
+    const value = rowData.toString();
+    if (value.includes(".png")) {
+      return (
+        <img className="h-24 w-auto" src={`../images/${value}`} alt={value} />
+      );
+    } else return value;
   };
 
   const renderRows = () => {
@@ -44,7 +59,14 @@ const ProductsTable = ({
       return (
         <tr key={"row-" + rowData.code}>
           {Object.values(rowData).map((celData, i) => {
-            return <td key={"cel-" + i + rowData.code}>{celData}</td>;
+            return (
+              <td
+                className="text-left border-black border-solid border p-1.5"
+                key={"cel-" + i + rowData.code}
+              >
+                {renderCellContent(celData)}
+              </td>
+            );
           })}
         </tr>
       );
@@ -56,9 +78,11 @@ const ProductsTable = ({
       <div>
         <input onChange={(evt) => searchInTable(evt)} />
       </div>
-      <table>
+      <table className="border-collapse">
         <thead>
-          <tr>{renderColumns()}</tr>
+          <tr className="border-black border-solid border">
+            {renderColumns()}
+          </tr>
         </thead>
         <tbody>{renderRows()}</tbody>
       </table>
