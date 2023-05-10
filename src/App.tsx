@@ -89,6 +89,7 @@ function App() {
           rowsData: products,
           sortFunction: sortTableByColumn,
           searchInTable: filterProducts,
+          title: "Catalogue",
         }}
       />
     </div>

@@ -10,6 +10,7 @@ const ProductsTable = ({
   rowsData,
   sortFunction,
   searchInTable,
+  title,
 }: ProductsTableTypes) => {
   const capitalizeString = (str: string) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -49,7 +50,7 @@ const ProductsTable = ({
     const value = rowData.toString();
     if (value.includes(".png")) {
       return (
-        <img className="h-24 w-auto" src={`../images/${value}`} alt={value} />
+        <img className="h-auto w-auto" src={`../images/${value}`} alt={value} />
       );
     } else return value;
   };
@@ -61,7 +62,7 @@ const ProductsTable = ({
           {Object.values(rowData).map((celData, i) => {
             return (
               <td
-                className="text-left border-black border-solid border p-1.5"
+                className="text-left border-black border-solid border p-1.5 min-w-[120px]"
                 key={"cel-" + i + rowData.code}
               >
                 {renderCellContent(celData)}
@@ -74,9 +75,14 @@ const ProductsTable = ({
   };
 
   return (
-    <div>
-      <div>
-        <input onChange={(evt) => searchInTable(evt)} />
+    <div className=" overflow-y-scroll">
+      <h1 className="text-left text-3xl">{title}</h1>
+      <div className="flex flex-row justify-end items-center">
+        <label>Search </label>
+        <input
+          className="border-black border-solid border rounded ml-1.5"
+          onChange={(evt) => searchInTable(evt)}
+        />
       </div>
       <table className="border-collapse">
         <thead>
