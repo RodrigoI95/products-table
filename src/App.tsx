@@ -1,12 +1,11 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
 // Components
-import {ProductsTable} from "./components/ProductsTable";
+import { ProductsTable } from "./components/ProductsTable";
 
 // Data
-import data from './data/products.json';
+import data from "./data/products.json";
 
 // Hooks
 import { useState } from "react";
