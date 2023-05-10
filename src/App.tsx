@@ -80,7 +80,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="text-3xl border flex flex-row justify-center bg-lightGray p-1">
+      <div className="text-3xl border flex flex-row justify-center bg-lightGray p-3">
         <img src={Logo} alt="FORM" className="h-14 w-auto"></img>
       </div>
       <ProductsTable

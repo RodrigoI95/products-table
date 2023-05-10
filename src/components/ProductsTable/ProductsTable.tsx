@@ -27,7 +27,7 @@ const ProductsTable = ({
     return columns.map((column: Columns) => {
       return (
         <th
-          className="text-left border-black border-solid border p-1.5"
+          className="text-left border-black border-solid border p-1.5 xs:text-xs sm:text-sm md:text-base"
           key={column.title}
         >
           <div className="flex flex-row justify-center items-center">
@@ -35,9 +35,8 @@ const ProductsTable = ({
 
             {column.isSortable && (
               <img
-                className="pl-1.5"
+                className="pl-1.5 h-4 hover:h-3.5"
                 src={displayIcon(column.sortType)}
-                style={{ height: "15px" }}
                 onClick={() => sortFunction(column.title)}
               ></img>
             )}
@@ -57,13 +56,17 @@ const ProductsTable = ({
   };
 
   const renderRows = () => {
-    return rowsData.map((rowData: ProductData) => {
+    return rowsData.map((rowData: ProductData, i: number) => {
       return (
         <tr key={"row-" + rowData.code}>
           {Object.values(rowData).map((celData, i) => {
             return (
               <td
-                className="text-left border-black border-solid border p-1.5 min-w-[120px]"
+                className={
+                  typeof celData === "string"
+                    ? "text-left border-black border-solid border p-1.5 min-w-[80px] sm:min-w-[120px] xs:text-xs sm:text-sm md:text-base"
+                    : "text-center border-black border-solid border p-1.5 min-w-[80px] sm:min-w-[120px] xs:text-xs sm:text-sm md:text-base"
+                }
                 key={"cel-" + i + rowData.code}
               >
                 {renderCellContent(celData)}
@@ -76,8 +79,8 @@ const ProductsTable = ({
   };
 
   return (
-    <div className=" overflow-y-scroll">
-      <h1 className="text-left text-3xl mb-1">{title}</h1>
+    <div>
+      <h1 className="text-left text-3xl my-1">{title}</h1>
       <div className="flex flex-row justify-end items-center p-1.5">
         <label>
           <img src={Search} alt="Search" className="h-4"></img>{" "}
@@ -87,14 +90,16 @@ const ProductsTable = ({
           onChange={(evt) => searchInTable(evt)}
         />
       </div>
-      <table className="border-collapse">
-        <thead>
-          <tr className="border-black border-solid border">
-            {renderColumns()}
-          </tr>
-        </thead>
-        <tbody>{renderRows()}</tbody>
-      </table>
+      <div className=" overflow-y-scroll min-w-full">
+        <table className="border-collapse min-w-full">
+          <thead>
+            <tr className="border-black border-solid border">
+              {renderColumns()}
+            </tr>
+          </thead>
+          <tbody>{renderRows()}</tbody>
+        </table>
+      </div>
     </div>
   );
 };
