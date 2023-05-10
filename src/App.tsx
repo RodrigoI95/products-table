@@ -21,17 +21,20 @@ function App() {
   const [currentSortColumn, setCurrentSortColumn] =
     useState<string>("position");
 
+  // Methods
   const sortTableByColumn = (column: keyof ProductData) => {
     let sortedColumns = [...products];
+    let currentSortLocal: SortType = currentSort;
 
     if (column === currentSortColumn) {
-      setCurrentSort(currentSort === "descending" ? "ascending" : "descending");
+      currentSortLocal =
+        currentSort === "descending" ? "ascending" : "descending";
     } else {
-      setCurrentSort("ascending");
+      currentSortLocal = "ascending";
     }
 
     sortedColumns.sort((a: ProductData, b: ProductData) => {
-      const sortDirection = currentSort === "ascending" ? 1 : -1;
+      const sortDirection = currentSortLocal === "ascending" ? 1 : -1;
       const aValue = a[column];
       const bValue = b[column];
 
@@ -43,7 +46,7 @@ function App() {
         return 0;
       }
     });
-
+    setCurrentSort(currentSortLocal);
     setCurrentSortColumn(column);
     setProducts(sortedColumns);
   };
