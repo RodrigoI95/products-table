@@ -27,7 +27,7 @@ const ProductsTable = ({
     return columns.map((column: Columns) => {
       return (
         <th
-          className="text-left border-black border-solid border p-1.5 xs:text-xs sm:text-sm md:text-base"
+          className="text-left border-black border-solid border p-1.5 xs:text-xs sm:text-sm md:text-base font-heading font-extrabold "
           key={column.title}
         >
           <div className="flex flex-row justify-center items-center">
@@ -62,11 +62,9 @@ const ProductsTable = ({
           {Object.values(rowData).map((celData, i) => {
             return (
               <td
-                className={
-                  typeof celData === "string"
-                    ? "text-left border-black border-solid border p-1.5 min-w-[80px] sm:min-w-[120px] xs:text-xs sm:text-sm md:text-base"
-                    : "text-center border-black border-solid border p-1.5 min-w-[80px] sm:min-w-[120px] xs:text-xs sm:text-sm md:text-base"
-                }
+                className={`${
+                  typeof celData === "string" ? "text-left" : "text-center"
+                } border-black border-solid border p-1.5 min-w-[80px] sm:min-w-[120px] xs:text-xs sm:text-sm md:text-base`}
                 key={"cel-" + i + rowData.code}
               >
                 {renderCellContent(celData)}
@@ -79,18 +77,20 @@ const ProductsTable = ({
   };
 
   return (
-    <div>
-      <h1 className="text-left text-3xl my-1">{title}</h1>
-      <div className="flex flex-row justify-end items-center p-1.5">
-        <label>
-          <img src={Search} alt="Search" className="h-4"></img>{" "}
-        </label>
-        <input
-          className="border-black border-solid border rounded ml-1.5 mb-1"
-          onChange={(evt) => searchInTable(evt)}
-        />
+    <div className="px-3 pb-3">
+      <div className="flex flex-row justify-between items-center p-1.5">
+        <h1 className="text-left text-3xl my-1">{title}</h1>
+        <div className="flex flex-row justify-around items-center p-1.5">
+          <label>
+            <img src={Search} alt="Search" className="h-4"></img>{" "}
+          </label>
+          <input
+            className="border-black border-solid border rounded ml-1.5 mb-1 w-28 sm:w-36"
+            onChange={(evt) => searchInTable(evt)}
+          />
+        </div>
       </div>
-      <div className=" overflow-y-scroll min-w-full">
+      <div className=" overflow-y-scroll min-w-full ">
         <table className="border-collapse min-w-full">
           <thead>
             <tr className="border-black border-solid border">
