@@ -19,6 +19,7 @@
   }
   body{
     @apply font-body;
+    @apply text-base
   }
   h1,h2,h2{
     @apply font-heading;
