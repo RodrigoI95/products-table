@@ -52,7 +52,7 @@ function App() {
   };
 
   const createColumns = () => {
-    return Object.keys(products[0]).map((col) => {
+    return Object.keys(data.products[0]).map((col) => {
       const sortType = col === currentSortColumn ? currentSort : "none";
       return {
         title: col,
