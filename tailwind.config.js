@@ -7,6 +7,9 @@ module.exports = {
         heading: ["GTAmerica"],
         body: ["GTAmericaLight"],
       },
+      colors: {
+        lightGray: "#fafaf9",
+      },
     },
   },
   plugins: [],
