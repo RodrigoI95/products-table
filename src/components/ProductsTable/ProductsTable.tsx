@@ -76,11 +76,11 @@ const ProductsTable = ({
 
   return (
     <div className=" overflow-y-scroll">
-      <h1 className="text-left text-3xl">{title}</h1>
-      <div className="flex flex-row justify-end items-center">
+      <h1 className="text-left text-3xl mb-1">{title}</h1>
+      <div className="flex flex-row justify-end items-center p-1.5">
         <label>Search </label>
         <input
-          className="border-black border-solid border rounded ml-1.5"
+          className="border-black border-solid border rounded ml-1.5 mb-1"
           onChange={(evt) => searchInTable(evt)}
         />
       </div>
