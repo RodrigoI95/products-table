@@ -20,4 +20,5 @@ export type ProductsTableTypes = {
   columns: Columns[];
   rowsData: ProductData[];
   sortFunction: Function;
+  searchInTable: Function;
 };
