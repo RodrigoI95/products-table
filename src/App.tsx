@@ -13,6 +13,10 @@ import { useState } from "react";
 // Types
 import { SortType, ProductData } from "./components/ProductsTable/types";
 
+// Images
+import Logo from "./assets/images/form-logo.png";
+
+
 function App() {
   // States
   const [products, setProducts] = useState<ProductData[]>(data.products);
@@ -76,6 +80,9 @@ function App() {
 
   return (
     <div className="App">
+      <div className="text-3xl border flex flex-row justify-center">
+        <img src={Logo} alt="FORM" className="h-14 w-auto"></img>
+      </div>
       <ProductsTable
         {...{
           columns: createColumns(),
