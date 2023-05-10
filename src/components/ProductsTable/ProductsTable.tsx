@@ -2,8 +2,8 @@ import { ProductsTableTypes, ProductData, Columns } from "./types";
 
 // Icons
 import SortIcon from "../../assets/icons/upDownArrow.svg";
-import SortUp from "../../assets/icons/sort.svg";
-import SortDown from "../../assets/icons/reverseSort.svg";
+import SortDown from "../../assets/icons/ascending.png";
+import SortUp from "../../assets/icons/descending.png";
 
 const ProductsTable = ({
   columns,
@@ -16,8 +16,8 @@ const ProductsTable = ({
 
   const displayIcon = (sortType: string) => {
     if (sortType === "none") return SortIcon;
-    else if (sortType === "ascending") return SortUp;
-    else return SortDown;
+    else if (sortType === "ascending") return SortDown;
+    else return SortUp;
   };
 
   const renderColumns = () => {
