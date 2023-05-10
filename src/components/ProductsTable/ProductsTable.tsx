@@ -4,6 +4,7 @@ import { ProductsTableTypes, ProductData, Columns } from "./types";
 import SortIcon from "../../assets/icons/upDownArrow.svg";
 import SortDown from "../../assets/icons/ascending.png";
 import SortUp from "../../assets/icons/descending.png";
+import Search from "../../assets/icons/lupa.png";
 
 const ProductsTable = ({
   columns,
@@ -78,7 +79,9 @@ const ProductsTable = ({
     <div className=" overflow-y-scroll">
       <h1 className="text-left text-3xl mb-1">{title}</h1>
       <div className="flex flex-row justify-end items-center p-1.5">
-        <label>Search </label>
+        <label>
+          <img src={Search} alt="Search" className="h-4"></img>{" "}
+        </label>
         <input
           className="border-black border-solid border rounded ml-1.5 mb-1"
           onChange={(evt) => searchInTable(evt)}
